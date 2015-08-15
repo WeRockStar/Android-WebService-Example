@@ -4,12 +4,13 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
-import java.io.IOException;
 
 public class MainActivity extends Activity {
 
@@ -20,22 +21,20 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        OkHttpClient client = new OkHttpClient();
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = REDDIT_URL;
 
-        Request request = new Request.Builder()
-                .url(REDDIT_URL)
-                .build();
-
-        client.newCall(request).enqueue(new Callback() {
+        StringRequest request = new StringRequest(Request.Method.GET, REDDIT_URL, new Response.Listener<String>() {
             @Override
-            public void onFailure(Request request, IOException e) {
-                Toast.makeText(MainActivity.this , "Failure" , Toast.LENGTH_SHORT).show();
+            public void onResponse(String response) {
+                Toast.makeText(MainActivity.this , response , Toast.LENGTH_LONG).show();
             }
-
+        }, new Response.ErrorListener() {
             @Override
-            public void onResponse(Response response) throws IOException {
-                Toast.makeText(MainActivity.this , "Response" , Toast.LENGTH_SHORT).show();
+            public void onErrorResponse(VolleyError error) {
+                //WHEN AN ERROR
             }
         });
+        queue.add(request);
     }
 }
