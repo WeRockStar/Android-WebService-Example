@@ -9,20 +9,25 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
+
+    public final String REDDIT_URL = "https://www.reddit.com/r/all.json?limit=5";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         MyAsyncTask myAsyncTask = new MyAsyncTask();
-        myAsyncTask.execute("Sending...", "second");
+        myAsyncTask.execute("Sending...", "second", "three");
     }
 
     private class MyAsyncTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... params) {
-            String param = params[0];
-            return "Hello AsyncTask " + param;
+            String param1 = params[0];
+            String param2 = params[1];
+            String param3 = params[2];
+            return "Hello AsyncTask " + param1 + " , " + param2 + " , " + param3;
         }
 
         @Override
