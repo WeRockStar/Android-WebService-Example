@@ -7,6 +7,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -35,8 +39,20 @@ public class MainActivity extends Activity {
     private class MyAsyncTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... params) {
+            OkHttpClient client = new OkHttpClient();
+            Request request = new Request.Builder()
+                    .url(REDDIT_URL)
+                    .build();
 
+            Response response = null;
+            try {
+                response = client.newCall(request).execute();
+                return response.body().toString();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             return null;
+
         }
 
         @Override
