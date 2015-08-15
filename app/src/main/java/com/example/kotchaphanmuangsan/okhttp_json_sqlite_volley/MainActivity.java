@@ -35,37 +35,7 @@ public class MainActivity extends Activity {
     private class MyAsyncTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... params) {
-            String param1 = params[0];
-
-            String result = "";
-
-            HttpClient httpClient = new DefaultHttpClient();
-            HttpGet httpGet = new HttpGet(REDDIT_URL);
-            try {
-                HttpResponse response = httpClient.execute(httpGet, new BasicHttpContext());
-                InputStream is = response.getEntity().getContent();
-                result = inputStreamToString(is);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return result;
-        }
-
-        private String inputStreamToString(InputStream is) {
-            String line = "";
-            StringBuilder total = new StringBuilder();
-
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is));
-
-            try {
-                while ((line = bufferedReader.readLine()) != null) {
-                    total.append(line);
-                }
-            } catch (IOException e) {
-
-            }
-
-            return total.toString();
+            return null;
         }
 
         @Override
