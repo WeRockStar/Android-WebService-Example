@@ -35,6 +35,7 @@ public class MainActivity extends Activity {
     private class MyAsyncTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... params) {
+
             return null;
         }
 
