@@ -2,6 +2,7 @@ package com.example.kotchaphanmuangsan.okhttp_json_sqlite_volley;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
@@ -28,12 +29,12 @@ public class MainActivity extends Activity {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
-                
+                Toast.makeText(MainActivity.this , "Failure" , Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onResponse(Response response) throws IOException {
-
+                Toast.makeText(MainActivity.this , "Response" , Toast.LENGTH_SHORT).show();
             }
         });
     }
