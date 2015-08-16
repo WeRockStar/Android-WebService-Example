@@ -21,7 +21,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RequestQueue queue = Volley.newRequestQueue(this);
+        RequestQueue queue = ConnectionManager.getInstance(this);
         String url = REDDIT_URL;
 
         StringRequest request = new StringRequest(Request.Method.GET, REDDIT_URL, new Response.Listener<String>() {
