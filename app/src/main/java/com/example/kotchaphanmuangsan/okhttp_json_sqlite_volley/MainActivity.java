@@ -10,6 +10,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.kotchaphanmuangsan.okhttp_json_sqlite_volley.model.Post;
+import com.google.gson.Gson;
 
 
 public class MainActivity extends Activity {
@@ -27,6 +29,8 @@ public class MainActivity extends Activity {
         StringRequest request = new StringRequest(Request.Method.GET, REDDIT_URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+
+                Post post = new Gson().fromJson(response , Post.class);
                 Toast.makeText(MainActivity.this, response, Toast.LENGTH_LONG).show();
             }
         }, new Response.ErrorListener() {
