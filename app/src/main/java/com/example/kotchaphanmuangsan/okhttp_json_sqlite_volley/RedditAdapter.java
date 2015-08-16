@@ -2,6 +2,7 @@ package com.example.kotchaphanmuangsan.okhttp_json_sqlite_volley;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +22,7 @@ public class RedditAdapter extends RecyclerView.Adapter<RedditAdapter.MyViewHold
 
     Context mContext;
 
-    public RedditAdapter(List<Post> postList , Context context) {
+    public RedditAdapter(List<Post> postList, Context context) {
         this.mPostList = postList;
         this.mContext = context;
     }
@@ -36,7 +37,14 @@ public class RedditAdapter extends RecyclerView.Adapter<RedditAdapter.MyViewHold
     public void onBindViewHolder(MyViewHolder myViewHolder, int position) {
         Post currentPost = mPostList.get(position);
         myViewHolder.mTextViewPostName.setText(mPostList.get(position).getTitle());
-        myViewHolder.mPostImage.setImageUrl(currentPost.getThumbnaiURL() , ConnectionManager.getsImageLoader(mContext));
+        String string = "";
+        if (!TextUtils.isEmpty(currentPost.getThumbnaiURL())) {
+            myViewHolder.mPostImage.setVisibility(View.VISIBLE);
+            myViewHolder.mPostImage.setImageUrl(currentPost.getThumbnaiURL(), ConnectionManager.getsImageLoader(mContext));
+        } else {
+            myViewHolder.mPostImage.setVisibility(View.GONE);
+        }
+
     }
 
     @Override

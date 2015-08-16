@@ -2,36 +2,48 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#fff"
     android:layout_margin="5dp"
-    android:orientation="horizontal"
-    >
+    android:background="#fff"
+    android:orientation="horizontal">
 
-    <android.support.v7.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_gravity="center"
         card_view:cardCornerRadius="4dp">
 
-        <com.android.volley.toolbox.NetworkImageView
-            android:id="@+id/rowNetworkImageView"
-            android:layout_width="fill_parent"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
+
+            <com.android.volley.toolbox.NetworkImageView
+                android:id="@+id/rowNetworkImageView"
+                android:layout_width="fill_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop" />
+
+        </RelativeLayout>
+
 
         <TextView
-            android:layout_marginTop="150dp"
             android:id="@+id/rowTextViewName"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="150dp"
+            android:background="#000000"
             android:gravity="center"
             android:text="TEXT"
-            android:textStyle="bold"
-            android:layout_gravity="bottom"
-            android:background="#000000"
-            android:textColor="#fff" />
+            android:textColor="#fff"
+            android:textStyle="bold" />
 
     </android.support.v7.widget.CardView>
 

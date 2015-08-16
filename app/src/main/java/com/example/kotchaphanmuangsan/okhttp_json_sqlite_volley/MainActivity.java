@@ -23,7 +23,7 @@ import java.util.List;
 
 public class MainActivity extends Activity {
 
-    public final String REDDIT_URL = "https://www.reddit.com/r/all.json?limit=5";
+    public final String REDDIT_URL = "https://www.reddit.com/r/all.json";
     private RecyclerView recyclerView;
 
     @Override
