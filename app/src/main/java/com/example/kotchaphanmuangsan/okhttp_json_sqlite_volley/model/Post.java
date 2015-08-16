@@ -16,4 +16,15 @@ public class Post {
     private String title;
 
 
+    public String getTitle() {
+        return title;
+    }
+
+    public String getPermalink() {
+        return permalink;
+    }
+
+    public String getThumbnaiURL() {
+        return thumbnaiURL;
+    }
 }

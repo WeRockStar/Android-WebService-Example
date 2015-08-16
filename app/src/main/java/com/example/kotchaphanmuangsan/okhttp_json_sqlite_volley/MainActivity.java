@@ -41,7 +41,11 @@ public class MainActivity extends Activity {
             public void onResponse(String response) {
 
                 Listing listing = new Gson().fromJson(response, Listing.class);
-                Toast.makeText(MainActivity.this, response, Toast.LENGTH_LONG).show();
+
+                RedditAdapter adapter = new RedditAdapter(listing.getPostList());
+                recyclerView.setAdapter(adapter);
+
+                //Toast.makeText(MainActivity.this, response, Toast.LENGTH_LONG).show();
             }
         }, new Response.ErrorListener() {
             @Override
