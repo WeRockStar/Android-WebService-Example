@@ -35,7 +35,7 @@ public class ConnectionManager {
 
                 @Override
                 public void putBitmap(String url, Bitmap bitmap) {
-                    mCache.put(url , bitmap);
+                    mCache.put(url, bitmap);
                 }
             });
         }

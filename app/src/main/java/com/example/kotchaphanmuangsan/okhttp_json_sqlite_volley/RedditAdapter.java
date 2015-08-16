@@ -39,10 +39,10 @@ public class RedditAdapter extends RecyclerView.Adapter<RedditAdapter.MyViewHold
         myViewHolder.mTextViewPostName.setText(mPostList.get(position).getTitle());
         String string = "";
         if (!TextUtils.isEmpty(currentPost.getThumbnaiURL())) {
-            myViewHolder.mPostImage.setVisibility(View.VISIBLE);
+            ((View)myViewHolder.mPostImage.getParent()).setVisibility(View.VISIBLE);
             myViewHolder.mPostImage.setImageUrl(currentPost.getThumbnaiURL(), ConnectionManager.getsImageLoader(mContext));
         } else {
-            myViewHolder.mPostImage.setVisibility(View.GONE);
+            ((View)myViewHolder.mPostImage.getParent()).setVisibility(View.GONE);
         }
 
     }
