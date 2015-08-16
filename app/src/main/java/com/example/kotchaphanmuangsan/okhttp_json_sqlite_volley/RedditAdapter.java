@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.NetworkImageView;
 import com.example.kotchaphanmuangsan.okhttp_json_sqlite_volley.model.Post;
 
 import java.util.List;
@@ -39,10 +40,12 @@ public class RedditAdapter extends RecyclerView.Adapter<RedditAdapter.MyViewHold
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView mTextViewPostName;
+        public NetworkImageView mPostImage;
 
         public MyViewHolder(View view) {
             super(view);
             mTextViewPostName = (TextView) view.findViewById(R.id.rowTextViewName);
+            mPostImage = (NetworkImageView) view.findViewById(R.id.rowNetworkImageView);
         }
     }
 }

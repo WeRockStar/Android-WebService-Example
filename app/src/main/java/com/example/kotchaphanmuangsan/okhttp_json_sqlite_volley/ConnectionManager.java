@@ -30,12 +30,12 @@ public class ConnectionManager {
 
                 @Override
                 public Bitmap getBitmap(String url) {
-                    return null;
+                    return mCache.get(url);
                 }
 
                 @Override
                 public void putBitmap(String url, Bitmap bitmap) {
-
+                    mCache.put(url , bitmap);
                 }
             });
         }
