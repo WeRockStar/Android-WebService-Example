@@ -5,6 +5,9 @@
     android:background="#fff"
     android:orientation="horizontal">
 
+
+    
+
     <TextView
         android:id="@+id/rowTextViewName"
         android:layout_width="match_parent"
