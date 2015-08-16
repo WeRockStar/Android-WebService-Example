@@ -58,11 +58,7 @@ public class RedditDAO {
             db.endTransaction();
 
             db.close();
-        } catch (
-                Exception e
-                )
-
-        {
+        } catch (Exception e) {
             return false;
 
         }

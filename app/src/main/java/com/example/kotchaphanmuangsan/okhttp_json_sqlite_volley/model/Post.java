@@ -9,7 +9,7 @@ public class Post {
     @SerializedName("permalink")
     private String permalink;
 
-    @SerializedName("thumbnai")
+    @SerializedName("thumbnail")
     private String thumbnaiURL;
 
     @SerializedName("title")
