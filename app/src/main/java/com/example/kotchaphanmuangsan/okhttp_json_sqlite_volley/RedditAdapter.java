@@ -1,15 +1,12 @@
 package com.example.kotchaphanmuangsan.okhttp_json_sqlite_volley;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.kotchaphanmuangsan.okhttp_json_sqlite_volley.model.Post;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
