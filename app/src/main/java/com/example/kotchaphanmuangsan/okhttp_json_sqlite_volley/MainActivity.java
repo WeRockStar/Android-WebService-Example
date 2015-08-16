@@ -10,6 +10,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.kotchaphanmuangsan.okhttp_json_sqlite_volley.model.Listing;
 import com.example.kotchaphanmuangsan.okhttp_json_sqlite_volley.model.Post;
 import com.google.gson.Gson;
 
@@ -30,8 +31,8 @@ public class MainActivity extends Activity {
             @Override
             public void onResponse(String response) {
 
-                Post post = new Gson().fromJson(response , Post.class);
-                Toast.makeText(MainActivity.this, response, Toast.LENGTH_LONG).show();
+                Listing listing = new Gson().fromJson(response, Listing.class);
+                Toast.makeText(MainActivity.this, listing.getPostList().size(), Toast.LENGTH_LONG).show();
             }
         }, new Response.ErrorListener() {
             @Override
