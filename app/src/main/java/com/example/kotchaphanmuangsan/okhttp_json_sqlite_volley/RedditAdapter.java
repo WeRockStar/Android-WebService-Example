@@ -62,4 +62,8 @@ public class RedditAdapter extends RecyclerView.Adapter<RedditAdapter.MyViewHold
             mPostImage = (NetworkImageView) view.findViewById(R.id.rowNetworkImageView);
         }
     }
+
+    public static interface MyListItemClickListener{
+        public void OnItemClick(Post itemClicked);
+    }
 }

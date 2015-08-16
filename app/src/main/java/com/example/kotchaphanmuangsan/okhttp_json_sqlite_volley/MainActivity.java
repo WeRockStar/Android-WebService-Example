@@ -21,7 +21,7 @@ import com.google.gson.Gson;
 import java.util.List;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements RedditAdapter.MyListItemClickListener{
 
     public final String REDDIT_URL = "https://www.reddit.com/r/all.json";
     private RecyclerView recyclerView;
@@ -68,5 +68,10 @@ public class MainActivity extends Activity {
         });
         //ConnectionManager.getInstance(this).add(request);
         queue.add(request);
+    }
+
+    @Override
+    public void OnItemClick(Post itemClicked) {
+        //TODO Open a website with the link 
     }
 }
