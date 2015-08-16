@@ -47,7 +47,7 @@ public class MainActivity extends Activity {
 
                 List<Post> postList = listing.getPostList();
 
-                RedditAdapter adapter = new RedditAdapter(postList);
+                RedditAdapter adapter = new RedditAdapter(postList , MainActivity.this);
 
                 //
                 RedditDAO.getsInstance().storePosts(MainActivity.this, postList);
@@ -62,7 +62,7 @@ public class MainActivity extends Activity {
                 //WHEN AN ERROR
 
                 List<Post> postList = RedditDAO.getsInstance().getPostsFromDB(MainActivity.this);
-                RedditAdapter adapter = new RedditAdapter(postList);
+                RedditAdapter adapter = new RedditAdapter(postList , MainActivity.this);
                 recyclerView.setAdapter(adapter);
             }
         });
