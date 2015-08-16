@@ -73,5 +73,6 @@ public class MainActivity extends Activity implements RedditAdapter.MyListItemCl
     @Override
     public void OnItemClick(Post itemClicked) {
         //TODO Open a website with the link
+        Toast.makeText(MainActivity.this , "Item Click" + itemClicked.getTitle() , Toast.LENGTH_SHORT).show();
     }
 }

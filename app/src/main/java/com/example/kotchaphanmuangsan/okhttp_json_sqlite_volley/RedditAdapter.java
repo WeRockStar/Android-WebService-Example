@@ -28,6 +28,8 @@ public class RedditAdapter extends RecyclerView.Adapter<RedditAdapter.MyViewHold
         this.mPostList = postList;
         this.mContext = context;
         this.mListener = listener;
+
+
     }
 
     @Override
@@ -55,7 +57,7 @@ public class RedditAdapter extends RecyclerView.Adapter<RedditAdapter.MyViewHold
         return mPostList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public TextView mTextViewPostName;
         public NetworkImageView mPostImage;
 
@@ -63,6 +65,12 @@ public class RedditAdapter extends RecyclerView.Adapter<RedditAdapter.MyViewHold
             super(view);
             mTextViewPostName = (TextView) view.findViewById(R.id.rowTextViewName);
             mPostImage = (NetworkImageView) view.findViewById(R.id.rowNetworkImageView);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            mListener.OnItemClick(mPostList.get(getPosition()));
         }
     }
 
