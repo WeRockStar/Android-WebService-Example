@@ -60,6 +60,10 @@ public class MainActivity extends Activity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 //WHEN AN ERROR
+
+                List<Post> postList = RedditDAO.getsInstance().getPostsFromDB(MainActivity.this);
+                RedditAdapter adapter = new RedditAdapter(postList);
+                recyclerView.setAdapter(adapter);
             }
         });
         //ConnectionManager.getInstance(this).add(request);

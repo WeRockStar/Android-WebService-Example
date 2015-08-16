@@ -28,6 +28,8 @@ public class RedditDAO {
 
     public boolean storePosts(Context context, List<Post> postList) {
 
+        List<Post> storedPost = RedditDAO.getsInstance().getPostsFromDB(context);
+
         try {
             //TODO write
             SQLiteDatabase db = new DBOpenHelper(context).getWritableDatabase();
@@ -36,23 +38,35 @@ public class RedditDAO {
             db.beginTransaction();
 
             for (Post post : postList) {
-                ContentValues contentValues = new ContentValues();
-                contentValues.put(DatabaseContract.PostTable.TITLE, post.getTitle());
-                contentValues.put(DatabaseContract.PostTable.LINK, post.getPermalink());
-                contentValues.put(DatabaseContract.PostTable.IMAGELINK, post.getThumbnaiURL());
+                boolean isInDb = false;
+                for (Post postStored : storedPost) {
+                    if (post.getTitle().equals(postStored.getTitle())) {
+                        isInDb = true;
+                    }
+                }
+                if (!isInDb) {
+                    ContentValues contentValues = new ContentValues();
+                    contentValues.put(DatabaseContract.PostTable.TITLE, post.getTitle());
+                    contentValues.put(DatabaseContract.PostTable.LINK, post.getPermalink());
+                    contentValues.put(DatabaseContract.PostTable.IMAGELINK, post.getThumbnaiURL());
 
-                //write to db
-                db.insert(DatabaseContract.PostTable.TABLE_NAME, null, contentValues);
+                    //write to db
+                    db.insert(DatabaseContract.PostTable.TABLE_NAME, null, contentValues);
+                }
             }
-
             db.setTransactionSuccessful();
             db.endTransaction();
 
             db.close();
-        } catch (Exception e) {
+        } catch (
+                Exception e
+                )
+
+        {
             return false;
 
         }
+
         return true;
     }
 
