@@ -27,7 +27,7 @@ public class MainActivity extends Activity {
         StringRequest request = new StringRequest(Request.Method.GET, REDDIT_URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Toast.makeText(MainActivity.this , response , Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, response, Toast.LENGTH_LONG).show();
             }
         }, new Response.ErrorListener() {
             @Override
