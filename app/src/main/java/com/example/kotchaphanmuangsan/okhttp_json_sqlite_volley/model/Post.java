@@ -16,6 +16,12 @@ public class Post {
     private String title;
 
 
+    public Post(String permalink, String thumbnaiURL, String title) {
+        this.permalink = permalink;
+        this.thumbnaiURL = thumbnaiURL;
+        this.title = title;
+    }
+
     public String getTitle() {
         return title;
     }

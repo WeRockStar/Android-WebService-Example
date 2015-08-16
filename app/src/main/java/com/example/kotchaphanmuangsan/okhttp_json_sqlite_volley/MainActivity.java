@@ -13,9 +13,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.kotchaphanmuangsan.okhttp_json_sqlite_volley.database.RedditDAO;
 import com.example.kotchaphanmuangsan.okhttp_json_sqlite_volley.model.Listing;
 import com.example.kotchaphanmuangsan.okhttp_json_sqlite_volley.model.Post;
 import com.google.gson.Gson;
+
+import java.util.List;
 
 
 public class MainActivity extends Activity {
@@ -42,7 +45,13 @@ public class MainActivity extends Activity {
 
                 Listing listing = new Gson().fromJson(response, Listing.class);
 
-                RedditAdapter adapter = new RedditAdapter(listing.getPostList());
+                List<Post> postList = listing.getPostList();
+
+                RedditAdapter adapter = new RedditAdapter(postList);
+
+                //
+                RedditDAO.getsInstance().storePosts(MainActivity.this, postList);
+
                 recyclerView.setAdapter(adapter);
 
                 //Toast.makeText(MainActivity.this, response, Toast.LENGTH_LONG).show();

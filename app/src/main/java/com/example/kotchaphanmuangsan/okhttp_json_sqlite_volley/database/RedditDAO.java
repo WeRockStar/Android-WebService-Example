@@ -2,10 +2,12 @@ package com.example.kotchaphanmuangsan.okhttp_json_sqlite_volley.database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.kotchaphanmuangsan.okhttp_json_sqlite_volley.model.Post;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -52,5 +54,27 @@ public class RedditDAO {
 
         }
         return true;
+    }
+
+    public List<Post> getPostsFromDB(Context context) {
+        SQLiteDatabase db = new DBOpenHelper(context).getWritableDatabase();
+        Cursor cursor = db.query(DatabaseContract.PostTable.TABLE_NAME, null, null, null, null, null, null);
+
+        cursor.moveToFirst();
+
+        List<Post> postList = new ArrayList<>();
+        while (cursor.moveToNext()) {
+            String title = cursor.getString(cursor.getColumnIndex(DatabaseContract.PostTable.TITLE));
+            String link = cursor.getString(cursor.getColumnIndex(DatabaseContract.PostTable.LINK));
+            String imageLink = cursor.getString(cursor.getColumnIndex(DatabaseContract.PostTable.IMAGELINK));
+
+            Post post = new Post(link, imageLink, title);
+
+            postList.add(post);
+        }
+        cursor.close();
+        db.close();
+
+        return postList;
     }
 }
