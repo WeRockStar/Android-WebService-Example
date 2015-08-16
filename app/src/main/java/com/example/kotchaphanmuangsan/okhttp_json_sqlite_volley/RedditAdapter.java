@@ -22,9 +22,12 @@ public class RedditAdapter extends RecyclerView.Adapter<RedditAdapter.MyViewHold
 
     Context mContext;
 
-    public RedditAdapter(List<Post> postList, Context context) {
+    MyListItemClickListener mListener;
+
+    public RedditAdapter(List<Post> postList, Context context , MyListItemClickListener listener) {
         this.mPostList = postList;
         this.mContext = context;
+        this.mListener = listener;
     }
 
     @Override

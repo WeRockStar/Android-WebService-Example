@@ -47,7 +47,7 @@ public class MainActivity extends Activity implements RedditAdapter.MyListItemCl
 
                 List<Post> postList = listing.getPostList();
 
-                RedditAdapter adapter = new RedditAdapter(postList , MainActivity.this);
+                RedditAdapter adapter = new RedditAdapter(postList , MainActivity.this , MainActivity.this);
 
                 //
                 RedditDAO.getsInstance().storePosts(MainActivity.this, postList);
@@ -62,7 +62,7 @@ public class MainActivity extends Activity implements RedditAdapter.MyListItemCl
                 //WHEN AN ERROR
 
                 List<Post> postList = RedditDAO.getsInstance().getPostsFromDB(MainActivity.this);
-                RedditAdapter adapter = new RedditAdapter(postList , MainActivity.this);
+                RedditAdapter adapter = new RedditAdapter(postList , MainActivity.this , MainActivity.this);
                 recyclerView.setAdapter(adapter);
             }
         });
@@ -72,6 +72,6 @@ public class MainActivity extends Activity implements RedditAdapter.MyListItemCl
 
     @Override
     public void OnItemClick(Post itemClicked) {
-        //TODO Open a website with the link 
+        //TODO Open a website with the link
     }
 }
