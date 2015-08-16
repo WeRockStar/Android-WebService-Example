@@ -2,6 +2,9 @@ package com.example.kotchaphanmuangsan.okhttp_json_sqlite_volley;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -18,6 +21,7 @@ import com.google.gson.Gson;
 public class MainActivity extends Activity {
 
     public final String REDDIT_URL = "https://www.reddit.com/r/all.json?limit=5";
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +31,17 @@ public class MainActivity extends Activity {
         RequestQueue queue = ConnectionManager.getInstance(this);
         String url = REDDIT_URL;
 
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerListview);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+
         StringRequest request = new StringRequest(Request.Method.GET, REDDIT_URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
                 Listing listing = new Gson().fromJson(response, Listing.class);
-                Toast.makeText(MainActivity.this, listing.getPostList().size(), Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, response, Toast.LENGTH_LONG).show();
             }
         }, new Response.ErrorListener() {
             @Override
