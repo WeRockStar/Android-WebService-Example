@@ -35,6 +35,7 @@ public class MainActivity extends Activity {
                 //WHEN AN ERROR
             }
         });
+        //ConnectionManager.getInstance(this).add(request);
         queue.add(request);
     }
 }
