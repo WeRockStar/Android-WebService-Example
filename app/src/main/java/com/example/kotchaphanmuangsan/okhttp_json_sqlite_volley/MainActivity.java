@@ -77,6 +77,7 @@ public class MainActivity extends Activity implements RedditAdapter.MyListItemCl
         //Toast.makeText(MainActivity.this , "Item Click" + itemClicked.getTitle() , Toast.LENGTH_SHORT).show();
 
         Intent webIntent = new Intent(MainActivity.this, WebActivity.class);
-        
+        webIntent.putExtra("URL", itemClicked.getPermalink());
+        startActivity(webIntent);
     }
 }
