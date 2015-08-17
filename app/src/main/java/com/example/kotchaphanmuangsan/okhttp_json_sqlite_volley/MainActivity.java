@@ -1,6 +1,7 @@
 package com.example.kotchaphanmuangsan.okhttp_json_sqlite_volley;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -21,7 +22,7 @@ import com.google.gson.Gson;
 import java.util.List;
 
 
-public class MainActivity extends Activity implements RedditAdapter.MyListItemClickListener{
+public class MainActivity extends Activity implements RedditAdapter.MyListItemClickListener {
 
     public final String REDDIT_URL = "https://www.reddit.com/r/all.json";
     private RecyclerView recyclerView;
@@ -47,7 +48,7 @@ public class MainActivity extends Activity implements RedditAdapter.MyListItemCl
 
                 List<Post> postList = listing.getPostList();
 
-                RedditAdapter adapter = new RedditAdapter(postList , MainActivity.this , MainActivity.this);
+                RedditAdapter adapter = new RedditAdapter(postList, MainActivity.this, MainActivity.this);
 
                 //
                 RedditDAO.getsInstance().storePosts(MainActivity.this, postList);
@@ -62,7 +63,7 @@ public class MainActivity extends Activity implements RedditAdapter.MyListItemCl
                 //WHEN AN ERROR
 
                 List<Post> postList = RedditDAO.getsInstance().getPostsFromDB(MainActivity.this);
-                RedditAdapter adapter = new RedditAdapter(postList , MainActivity.this , MainActivity.this);
+                RedditAdapter adapter = new RedditAdapter(postList, MainActivity.this, MainActivity.this);
                 recyclerView.setAdapter(adapter);
             }
         });
@@ -73,6 +74,9 @@ public class MainActivity extends Activity implements RedditAdapter.MyListItemCl
     @Override
     public void OnItemClick(Post itemClicked) {
         //TODO Open a website with the link
-        Toast.makeText(MainActivity.this , "Item Click" + itemClicked.getTitle() , Toast.LENGTH_SHORT).show();
+        //Toast.makeText(MainActivity.this , "Item Click" + itemClicked.getTitle() , Toast.LENGTH_SHORT).show();
+
+        Intent webIntent = new Intent(MainActivity.this, WebActivity.class);
+        
     }
 }
