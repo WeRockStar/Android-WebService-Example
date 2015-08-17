@@ -12,7 +12,7 @@ public class ApplicationClass extends Application {
     public void onCreate() {
         super.onCreate();
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                        .setDefaultFontPath("fonts/Roboto-Medium.ttf")
+                        .setDefaultFontPath("fonts/Roboto-Bold.ttf")
                         .setFontAttrId(R.attr.fontPath)
                         .build()
         );
