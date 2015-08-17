@@ -1,6 +1,7 @@
 package com.example.kotchaphanmuangsan.okhttp_json_sqlite_volley;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -20,6 +21,8 @@ import com.example.kotchaphanmuangsan.okhttp_json_sqlite_volley.model.Post;
 import com.google.gson.Gson;
 
 import java.util.List;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
 public class MainActivity extends Activity implements RedditAdapter.MyListItemClickListener {
@@ -79,5 +82,10 @@ public class MainActivity extends Activity implements RedditAdapter.MyListItemCl
         Intent webIntent = new Intent(MainActivity.this, WebActivity.class);
         webIntent.putExtra("URL", itemClicked.getPermalink());
         startActivity(webIntent);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }
